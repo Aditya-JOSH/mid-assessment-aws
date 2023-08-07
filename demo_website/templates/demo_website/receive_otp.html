@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+<form method="POST" action="/receive_otp" >
+  {% csrf_token %}
+  
+  <div class="container">
+    <h1>Receive Otp</h1>
+    <p>Add email </p>
+    <hr>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" id="email" required>
+
+    
+    <button type="submit" class="registerbtn">submit</button>
+  </div>
+  
+  
+</form>
+
+</body>
+</html>

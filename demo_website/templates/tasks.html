@@ -1,0 +1,52 @@
+<!-- tasks.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h2 class="text-center">Task Manager</h2>
+        <div class="row mt-3">
+            <div class="col">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="title" placeholder="Task Title" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" class="form-control" name="end_date" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Task</button>
+                </form>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>End Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for task in tasks %}
+                        <tr>
+                            <td>{{ task.title }}</td>
+                            <td>{{ task.end_date }}</td>
+                            <td><a href="{% url 'delete_task' task.id %}" class="btn btn-danger btn-sm">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
